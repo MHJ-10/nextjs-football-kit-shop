@@ -2,9 +2,11 @@ import ProductPage from "@/components/product/productsPage";
 import { getProducts, getTeamsName } from "@/data/db";
 import { GetStaticPaths, GetStaticProps } from "next";
 import { Products } from "../..";
+import { useRouter } from "next/router";
 
 function TeamProducts({ products }: Products) {
-  const teamName = products[0].team;
+  const router = useRouter();
+  const { teamName } = router.query;
   
   return (
     <ProductPage products={products} category={`کیت های تیم ${teamName}`} />

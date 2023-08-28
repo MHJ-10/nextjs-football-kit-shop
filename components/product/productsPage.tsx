@@ -13,7 +13,7 @@ function ProductPage({ products, category }: Props) {
 
   return (
     <div className="mt-24">
-      <h1 className="text-c4 text-2xl text-center my-5">{category}</h1>
+      <h1 className="text-c4 text-2xl text-center my-5 uppercase font-bold">{category}</h1>
       <FilterBar products={products} setProducts={setFilteredProducts} />
       <ProductCard products={filteredProducts} />
     </div>
