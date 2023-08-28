@@ -32,7 +32,7 @@ function ProductDetailCard({ product, handleModal }: ProductDetailProps) {
     }
     handleDisable();
     if (!session) setDisable(true);
-  }, [session?.user?.email, product.id]);
+  }, [session?.user?.email]);
 
   async function handleDelete() {
     await deleteProduct(product.id);
@@ -58,6 +58,9 @@ function ProductDetailCard({ product, handleModal }: ProductDetailProps) {
       toast.warning("سایز مورد نظر را انتخاب کنید");
     }
   }
+
+  if (!product)
+    return <p className="text-center text-xl mt-4 text-c4">محصول یافت نشد!</p>;
 
   return (
     <div className="grid grid-cols-2 mt-24 bg-white rounded-md border-4 border-c2 shadow-lg shadow-gray-600 my-5 mx-auto mobileS:w-full  mobileM:w-full mobileL:w-4/5 tabletS:w-4/5 tabletL:w-3/5 desktop:w-3/5 ">
