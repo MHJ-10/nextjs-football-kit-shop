@@ -1,13 +1,6 @@
 import { hashPassword } from "@/data/auth";
-import { supabase } from "@/data/db";
+import { supabase, User } from "@/data/db";
 import { NextApiRequest, NextApiResponse } from "next";
-
-interface User {
-  username: string;
-  email: string;
-  password: string;
-  isAdmin: boolean;
-}
 
 async function handler(req: NextApiRequest, res: NextApiResponse) {
   if (req.method === "POST") {
@@ -34,6 +27,7 @@ async function handler(req: NextApiRequest, res: NextApiResponse) {
       email,
       password: hashedPassword,
       isAdmin: false,
+      shoppingCart: [],
     });
     if (error) {
       res.status(402).json({ message: "مشکلی به وجود آمده" });
