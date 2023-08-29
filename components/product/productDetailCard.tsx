@@ -24,10 +24,12 @@ function ProductDetailCard({ product, handleModal }: ProductDetailProps) {
     async function handleDisable() {
       if (session?.user?.email && !session.user.image) {
         const user = await findUser(session.user.email);
-        const AddedProduct = user?.shoppingCart.find(
-          (p) => p.id === product.id
-        );
-        if (AddedProduct) setDisable(true);
+        if (user?.shoppingCart) {
+          const AddedProduct = user?.shoppingCart.find(
+            (p) => p.id === product.id
+          );
+          if (AddedProduct) setDisable(true);
+        }
       }
     }
     handleDisable();
